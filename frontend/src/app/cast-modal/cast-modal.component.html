@@ -1,0 +1,43 @@
+
+
+<div class="modal-header" *ngIf="actorDetails">
+    <h4 class="modal-title" id="modal-basic-title" style='color:black;' *ngIf="actorDetails.title">{{actorDetails.title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body" *ngIf="actorDetails" style="background-color: white !important;">
+
+        <div class="row">
+
+                <div class='col-lg-3 col-xs-12' >
+                    <img [src]="actorDetails['profile_path']" class='img-responsive' [ngClass]="{'actor-image-mobile':mobile,'actor-image':!mobile}">
+                </div>
+
+
+            <div class='col-lg-9' >
+                <p *ngIf="actorDetails.birthday">Birth: {{actorDetails.birthday}}</p>
+                <p *ngIf="actorDetails.place_of_birth">Birth place: {{actorDetails.place_of_birth}}</p>
+                <p *ngIf="actorDetails.gender">Gender: {{actorDetails.gender}}</p>
+                <p *ngIf="actorDetails.homepage">Website: <a [href]="actorDetails.homepage">{{actorDetails.homepage}}</a></p>
+                <p *ngIf="actorDetails.known_for_department">Known for: {{actorDetails.known_for_department}}</p>
+                <p *ngIf="actorDetails.also_known_as.length>0">Also Known as: {{actorDetails.also_known_as.join(', ')}}</p>
+                <div style="margin-top: 20px" *ngIf="actorExternal">
+                <a *ngIf="actorExternal['imdb_id']" [href]="actorExternal['imdb_id']" target="_blank" ngbPopover="Visit IMDB" triggers="mouseenter:mouseleave" ><fa-icon [icon]='imdb' style="color: #DBA506;font-size: 35px;margin-right:7px" target=_blank></fa-icon></a>
+                <a *ngIf="actorExternal['facebook_id']" [href]="actorExternal['facebook_id']" target="_blank" ngbPopover="Visit Facebook" triggers="mouseenter:mouseleave"><fa-icon [icon]='fb' style="color:blue;font-size: 32px;margin-right:7px"></fa-icon></a>
+                <a *ngIf="actorExternal['instagram_id']" [href]="actorExternal['instagram_id']" target="_blank" ngbPopover="Visit Instagram" triggers="mouseenter:mouseleave"><fa-icon [icon]='ig' style="color: purple;font-size: 35px;margin-right:7px" target=_blank></fa-icon></a>
+                <a *ngIf="actorExternal['twitter_id']" [href]="actorExternal['twitter_id']" target="_blank" ngbPopover="Visit Twitter" triggers="mouseenter:mouseleave"><fa-icon [icon]='twitter' style="color:#1DA1F2;font-size: 30px;margin-right:7px" target=_blank></fa-icon></a>
+            </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="actorDetails['biography']">
+            <div class='col-lg-12'>
+                <h4 style='margin-top: 10px'>Biography</h4>
+                <p>{{actorDetails.biography}}</p>
+            </div>
+        </div>
+
+    
+
+
+</div>

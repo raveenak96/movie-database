@@ -1,0 +1,21 @@
+body {
+    background-color: #020c21 !important;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer-text {
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    background-color: #020c21;
+    color: white;
+    padding-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    min-height: 40px;
+    max-height: 55px;
+
+}
+

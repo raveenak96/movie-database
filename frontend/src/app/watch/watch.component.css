@@ -1,0 +1,146 @@
+body,html {
+    background-color: #050a31 !important;
+    color: white !important;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+
+.actor-card {
+    text-align: center;
+    margin-left: 0 !important;
+    cursor: pointer;
+    height: 347.5px;
+}
+.col-2 {
+    min-width: 192px;
+
+    padding-left: 2px !important;
+    margin-bottom: 10px;
+}
+
+.watch-title {
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 50px;
+    margin-bottom:0;
+    line-height: 47pt;
+}
+.watch-tagline {
+    font-style: italic;
+    font-size: 23px;
+    color: rgba(255, 255, 255, 0.801);
+}
+
+.watch-rel {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.801);
+    margin-bottom: 5px;
+}
+.watch-g-title{
+    font-size: 16px;
+    color: white;
+
+
+}
+.g-names {
+    font-size: 20px;
+    color:  rgba(255, 255, 255, 0.548);;;
+}
+
+.add-to-watch {
+    background-color: #047bfc;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    height: 42px;
+    padding: 5px;
+    font-size: 19px;
+    width: 170px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.remove-from-watch {
+    background-color: #047bfc;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    height: 42px;
+    padding: 5px;
+    font-size: 19px;
+    width: 220px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.overview {
+    color: rgba(255, 255, 255, 0.548);;
+    font-size: 19px;
+}
+
+.card {
+    border-radius: 12px;
+    border: 0 !important;
+    overflow-y: hidden;
+    margin-left: 0 !important;
+}
+
+.cast-row {
+    margin-left: 0;
+}
+.avatar-img {
+    object-fit: contain;
+    width: 75px;
+    height: 75px;
+    margin-left: 5px;
+    border-radius: 50%;
+}
+.review-text {
+    float: right;
+}
+.review-rating {
+    color: white;
+    background-color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 27px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+.review-card {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+}
+
+
+.review-info {
+    margin-top: 40px;
+    color: #888;
+}
+
+.review-title {
+    font-weight: bolder;
+    font-size: 22px;
+    margin-right: 15px;
+}
+
+.review-content {
+    font-size: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+     -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.review-rest {
+    text-decoration: underline;
+    color: darkblue;
+}

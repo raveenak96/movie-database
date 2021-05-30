@@ -1,0 +1,17 @@
+<div   [@onImg]="showCaption ? 'hovering' : ''" >
+<ngb-carousel #carousel [ngClass]="{'mobile-indic':mobile,'regular-indic':!mobile}"  [interval]="5000" [wrap]='true' [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)" [showNavigationIndicators]="showNavigationIndicators" >
+    <ng-template ngbSlide *ngFor="let movie of movies; index as i">
+
+      <a [routerLink]="['/watch/movie',movie['id']]" (mouseenter)="showCaption=true" (mouseleave)="showCaption=false">
+
+        <div class="picsum-img-wrapper" >
+          <img id='carousel-image' [src]="movie['backdrop_path']" alt="" style="cursor: pointer" [@onImg]="showCaption ? 'hoveringImg':''">
+        </div>
+        <div  *ngIf="movie['title'] && (showCaption || mobile)" [ngClass]="{'carousel-caption':!mobile,'carousel-caption-mobile':mobile}" (mouseenter)="showCaption=true">
+          <p  id="carousel-title">{{movie['title']}} </p>
+        </div>
+      </a>
+      
+    </ng-template>
+  </ngb-carousel>
+</div>

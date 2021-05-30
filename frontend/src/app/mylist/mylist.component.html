@@ -1,0 +1,53 @@
+
+<body class="full-height">
+
+
+    <app-header></app-header>
+
+
+    
+    <h1 *ngIf="myList.length==0" class='no-items mx-auto'>No items found in Watchlist.</h1>
+    <div class="container">
+    <div *ngIf="myList.length>0">
+    <h1 style="display: block;margin-top: 20px;margin-bottom: 40px;"  [ngClass]="{'heading':mobile}">My WatchList</h1>
+    <div *ngFor="let itemList of myList; index as i">
+
+            <div class="row">
+                <div  *ngFor="let item of itemList;index as j" (mouseenter)="switchShowCaption(i*6+j,true)"
+                (mouseleave)="switchShowCaption(i*6+j,false)" [ngClass]="{'mx-auto':mobile,'col-lg-2':!mobile}">
+                    <div class="card " [ngClass]="{'small-card':!mobile,'large-card':mobile}" [routerLink]="['/watch',item['media_type'],item['id']]">
+                        <div class="card-caption" *ngIf="showCaption[i*6+j] && item['title']">
+                            <p [ngClass]="{'card-title':!mobile,'large-title':mobile}">{{item['title']}}</p>
+                        </div>
+                        <div class="img-wrapper" >
+                            <img *ngIf="item['poster_path']"
+                            [src]="item['poster_path']"
+                            class="card-img-top"
+                            alt="..." 
+                            />
+                            <img *ngIf="!item['poster_path']"
+                            src="https://cinemaone.net/images/movie_placeholder.png"
+                            class="card-img-top"
+                            alt="..." 
+                            />
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+</body>
+
+
+    <app-footer></app-footer>
+
+
+
+
+
+

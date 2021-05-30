@@ -1,0 +1,23 @@
+.container-fluid {
+    background-color: #050a31 !important;
+    color: white !important;
+    max-width: 1350px;
+    
+}
+
+.container {
+    max-width: 75%;
+    padding: 0;
+}
+
+
+
+
+app-footer {
+    background: black;
+}
+
+html,body {
+    background-color: #050a31 !important;
+    overflow: hidden;
+}

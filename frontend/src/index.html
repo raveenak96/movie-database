@@ -1,0 +1,55 @@
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>USC Films</title>
+      <base href="/">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+      <style>
+        /* width */
+        ::-webkit-scrollbar {
+          width: 10px;
+          height: 2px;
+          background-color: transparent;
+
+        }
+        
+        /* Track */
+        ::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px #a9abad; 
+          border-radius: 10px;
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: #a9abad; 
+          border-radius: 10px;
+          height: 100px;
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: rgb(85, 84, 84); 
+        }
+
+        body{
+          background-color:#050a31 !important;
+          overflow-x: hidden;
+        }
+        </style>
+    </head>
+<body>
+  <app-root></app-root>
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>

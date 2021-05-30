@@ -1,0 +1,133 @@
+<style>
+    /* width */
+    ::-webkit-scrollbar {
+      width: 20px;
+      height: 7px;
+      background-color: #050a31;
+
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px #a9abad; 
+      border-radius: 10px;
+    }
+     
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #a9abad; 
+      border-radius: 10px;
+
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgb(85, 84, 84); 
+    }
+    </style>
+
+<app-header>
+</app-header>
+
+
+    <body>
+    <div class='container' style="padding-top: 50px">
+        <div class='row'>
+
+            <div class='col-lg-8'>
+                <div>
+                <div class="embed-responsive embed-responsive-16by9" *ngIf="watchLink" style="width:100%;height:100%">
+                    <youtube-player [videoId]="watchLink" suggestedQuality="highres" [showBeforeIframeApiLoads]="false" ></youtube-player>
+                </div>
+                </div>
+            </div>
+            <div class='col-lg-4' *ngIf="details" >
+                <p *ngIf="details.title" class='watch-title'>{{details.title}}</p>
+                <p class='watch-tagline '>{{details.tagline}}</p>
+                <p *ngIf="mediaType=='movie'" class='watch-rel'><span *ngIf="details.release_date">{{details.release_date}} </span><span *ngIf="details.vote_average">| ★ {{details.vote_average}}</span><span *ngIf="details.runtime">  | {{details.runtime}}</span></p>
+                <p *ngIf="mediaType=='tv'" class='watch-rel'><span *ngIf="details.first_air_date">{{details.first_air_date}} </span><span *ngIf="details.vote_average">| ★ {{details.vote_average}}</span><span *ngIf="details.episode_run_time">  | {{details.episode_run_time}}</span></p>
+                <span *ngIf="details.genres" class='watch-g-title'>Genres: </span><span class='g-names'>{{details.genres.join(', ')}}</span><br>
+                <span *ngIf="details.spoken_languages" class='watch-g-title'>Spoken Languages: </span><span class='g-names'>{{details.spoken_languages.join(', ')}}</span><br>
+                <button class='add-to-watch' *ngIf='!inList' (click)="addToWatchList(details)">Add to Watchlist</button>
+                <button class='remove-from-watch' *ngIf='inList' (click)="removeFromWatchList(details)">Remove from Watchlist</button>
+                <ngb-alert #addAlert *ngIf="addedSuccess" type='success' (closed)="addedSuccess = ''">{{addedSuccess}}</ngb-alert>
+                <ngb-alert #removeAlert *ngIf="removeSuccess" type='danger' (closed)="removeSuccess = ''">{{removeSuccess}}</ngb-alert>
+                
+            </div>
+            
+        </div>
+
+        <div class="row" *ngIf="details">
+            <div class=col-lg-12>
+            <h4 style='margin-top: 10px'  *ngIf="details.overview">Description</h4>
+            <p  class='overview'  *ngIf="details.overview">{{details.overview}}</p>
+                <h4>Share</h4>
+                <a href="https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&text=Watch%20{{details.title}}&url={{watchLink}}&hashtags=USC,CSCI571,FightOn"><fa-icon [icon]='twitter' style="color:#1DA1F2;font-size: 30px;" target=_blank></fa-icon></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u={{watchLink}}&display=popup&ref=plugin&src=share_button" target="_blank">
+                <fa-icon [icon]='fb' style="color:blue;font-size: 32px;margin-left:7px"></fa-icon>
+            </a>
+
+            </div>
+
+        </div>
+        <div class="row" *ngIf="cast.length>0" style="margin-top: 30px;">
+
+            <div class="container-fluid">
+                <h1>Full Cast and Crew</h1>
+                <div class="row flex-row flex-nowrap cast-row " style='overflow-x: auto; color: black'>
+                    <div class="col-2" *ngFor="let actor of cast"  [ngStyle]="{'margin-right': mobile ? '17px' : '0px !important'}">
+                        <div class="card actor-card" (click)="openModal(actor['id'])" >
+                            <img [src]="actor['profile_path']" style="object-fit: cover;overflow-y: hidden" >
+                            <p style="font-weight: bold;margin-bottom: 0;padding-top:5px;" *ngIf="actor.title">{{actor.title}}</p>
+                            <p style="font-weight: bold;margin-bottom: 0;" *ngIf="actor.character">AS</p>
+                            <p *ngIf="actor.character">{{actor.character}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row reviews-div" style='margin-top: 30px' *ngIf="reviews.length>0">
+            <div class="container-fluid">
+                <h1>Reviews <span style="color:#888;margin-left:10px" >{{reviews.length}}</span></h1>
+                <div class='row-lg-13' style="color:black">
+                    <div class="card review-card" *ngFor="let review of reviews">
+                        <div class='row'>
+                            <div class='col-sm-2' style='float:left;height: 100%;'>
+                                <img [src]="review['avatar_path']" class='avatar-img'>
+                            </div>
+                            <div class='col-lg-10 col-xs-4 review-text' >
+                                <span class='review-title' *ngIf="review.author">A review created by {{review.author}}</span> <br *ngIf="mobile">
+                                <span class='review-rating'><span style='font-size:23px'>★</span> {{review.rating}} </span>
+                                <p class='review-info' *ngIf="review.created_at">Written by {{review.author}} on {{ review.created_at | date:'MMMM d, y, h:mm:ss a'}}</p>
+                                <p class='review-content' *ngIf="review.content">{{review.content}}</p>
+                                <a [href]="review['url']" class='review-rest' target='_blank' *ngIf="review['url']">Read the rest</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top:40px;width:97%" class="mx-auto">
+            <ng-container *ngIf="mediaType=='movie'">
+                <app-static-carousel backendRoute="recommendations" [media_type]="mediaType" [id]="id" heading="Recommended Movies"></app-static-carousel>
+                <app-static-carousel backendRoute="similar" [media_type]="mediaType" [id]="id" heading="Similar Movies"></app-static-carousel>
+            </ng-container>
+
+            <ng-container *ngIf="mediaType=='tv'">
+                <app-static-carousel backendRoute="recommendations" [media_type]="mediaType" [id]="id" heading="Recommended TV Shows"></app-static-carousel>
+                <app-static-carousel backendRoute="similar" media_type="tv" [id]="id" heading="Similar TV Shows"></app-static-carousel>
+            </ng-container>
+        </div>
+</div>
+
+<app-footer>
+
+</app-footer>
+</body>
+
+
+
+
+
+
+

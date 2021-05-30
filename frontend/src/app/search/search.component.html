@@ -1,0 +1,15 @@
+
+
+<ng-template #rt let-r="result" let-t="term">
+    <a [routerLink]="['/watch',r['media_type'],r['id']]" class='search-item' (click)="setCollapsed()">
+    <img [src]="r['backdrop_path']" class="mr-1" style="width: 50px; height: 30px">
+    <ngb-highlight [result]="r.title" [term]="t" style="text-overflow: ellipsis;"></ngb-highlight>
+    </a>
+
+</ng-template>
+<form class="form-inline ml-auto  my-lg-0 " [ngClass]="{'ml-auto':!mobile,'mr-auto':mobile}" style="padding-right: 40px;">
+    <input class="form-control mr-3"  [class.is-invalid]="searchFailed"  type="search" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="Search" aria-label="Search">
+
+</form>
+
+

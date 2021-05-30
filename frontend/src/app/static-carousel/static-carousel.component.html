@@ -1,0 +1,87 @@
+
+
+  <h1 style="color:white" class='heading' [ngClass]="{'ml-4':mobile,'mx-auto':!mobile}" *ngIf="items.length>0">{{heading}}</h1>
+<div [attr.id]="[carouselId]"
+  class="carousel slide carousel-dark text-center mx-auto"
+  data-ride="carousel"
+  data-interval="false" *ngIf="items.length>0"
+>
+
+<span>
+
+
+<!-- Inner -->
+<div class="carousel-inner">
+
+    <!-- Single item -->
+ 
+
+        <div class="carousel-item" [ngClass]="{'active': i === 0}" *ngFor="let itemList of items;index as i" >
+
+                <div class="row one-section" >
+
+                        <div  *ngFor="let item of itemList;index as j" (mouseenter)="switchShowCaption(j,true)"
+                        (mouseleave)="switchShowCaption(j,false)" [ngClass]="{'mx-auto':mobile,'col-2':!mobile}" >
+                            <div class="card rounded-0" [ngClass]="{'small-card':!mobile,'large-card':mobile}" [routerLink]="['/watch',(media_type || item['media_type']),item['id']]">
+                            
+
+                            <!--<div class="img-wrapper" *ngIf="media_type" [style.background-image]="'url('+item.poster_path+')'">-->
+                              <div [ngClass]="{'card-caption':!mobile,'card-caption-mobile':mobile}" *ngIf="showCaption[j]">
+                                <p class="card-title"  >{{item['title']}}</p>
+                              </div>
+ 
+
+                              <img
+                                  [src]="item['poster_path']"
+                                  class="card-img rounded-0"
+                                  alt="..." 
+                              />
+
+
+                          </div>
+
+                        </div>
+
+                </div>
+
+        </div>
+      </div>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+</span>
+
+<ul class="carousel-indicators d-none d-md-flex" *ngIf="items.length>1 && !mobile">
+  <li *ngFor='let it of items;index as k' [attr.data-target]="['#'+carouselId]" [attr.data-slide-to]="[k]" [ngClass]="{'active':k===0}"></li>
+
+</ul>
+<button *ngIf="items.length>1"
+class="carousel-control-prev "
+type="button"
+[attr.data-target]="['#'+carouselId]"
+data-slide="prev" [ngClass]="{'carousel-control-mobile':mobile,'carousel-prev':!mobile}"
+>
+<span class="carousel-control-prev-icon " aria-hidden="true"></span>
+</button>
+<button *ngIf="items.length>1"
+      class="carousel-control-next "
+      type="button"
+      [attr.data-target]="['#'+carouselId]"
+      data-slide="next" [ngClass]="{'carousel-control-mobile':mobile,'carousel-next':!mobile}"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+
+</div>
+
+

@@ -1,0 +1,32 @@
+
+
+<body>
+
+    <app-header></app-header>
+
+    <div class='container' style='margin-top: 20px' [ngStyle]="{'max-width': mobile ? '82%' : '1144px'}">
+    <app-currently-playing></app-currently-playing>
+</div>
+    <div class='container-fluid'>
+    <ng-container *ngIf="contWatch">
+        <app-static-carousel [backendRoute]="contWatch" media_type="" heading="Continue Watching"></app-static-carousel>
+    </ng-container>
+    <ng-container *ngFor="let media_type of media_types;index as m">
+        <ng-container *ngFor="let route of routes; index as r">
+
+            <app-static-carousel [backendRoute]="route" [media_type]="media_type" [heading]="headings[m*3+r]"></app-static-carousel>
+
+        </ng-container>
+    </ng-container>
+
+</div>
+
+    
+    
+
+
+    
+
+    <app-footer></app-footer>
+</body>
+
