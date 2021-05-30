@@ -8,7 +8,7 @@ const port = process.env.PORT || 8080;
 
 
 base_tmdb = 'https://api.themoviedb.org/3/'
-api_key = '1f047a8a3c39611ebf69480af6d434ae'
+api_key = ''
 api_key_dict = {"api_key":api_key}
 backdrop_base = 'https://image.tmdb.org/t/p/original'
 yt_base = "https://www.youtube.com/embed/"
