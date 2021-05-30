@@ -2,8 +2,8 @@
 
 A responsive Angular web app for browsing information about movies and TV, similar to IMDB. 
 
-Frontend Technologies: Angular 11, TypeScript, Boostrap
+**Frontend Technologies:** Angular 11, TypeScript, Boostrap
 
-Backend proxy server: NodeJS 
+**Backend proxy server:** NodeJS 
 
-Leverages API provided by TMDB: https://www.themoviedb.org/
+Leverages the API provided by TMDB: https://www.themoviedb.org/
